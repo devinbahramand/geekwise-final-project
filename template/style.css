@@ -1,3 +1,14 @@
-h1 {
-	color:red;
+#clicker{
+	position:fixed;
+	width: 300;
+	right: 600;
+	top: 300;
+
+}
+#clickerCount{
+	position:fixed;
+	right: 600;
+	top: 120;
+	font-size: 75px;
+	font-family: Arial;
 }

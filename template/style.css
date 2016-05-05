@@ -8,7 +8,40 @@
 #clickerCount{
 	position:fixed;
 	right: 600;
-	top: 120;
+	top: 60;
 	font-size: 75px;
 	font-family: Arial;
+}
+#pointsPerSec{
+	position:fixed;
+	right: 650;
+	top: 180;
+	font-size: 30px;
+	font-family: Arial;
+}
+#upgrades{
+	position:fixed;
+	font-size: 60px;
+	font-family: Arial;
+	top: 20;
+	right: 200;
+}
+#upgradeOne{
+	position:fixed;
+	height: 100px;
+	width: 200px;
+	top: 160;
+	right: 230;
+}
+#upgradeOneDescription{
+	position:fixed;
+	top: 160;
+	right: 40;
+}
+#upgradeTwo{
+	position:fixed;
+	height: 100px;
+	width: 200px;
+	top: 265;
+	right: 230;
 }

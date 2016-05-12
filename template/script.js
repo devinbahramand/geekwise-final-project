@@ -12,6 +12,9 @@ document.getElementById("clicker").addEventListener('click', function() {
 	else if (upgradeOnePurchases == 3) {
 		clickCount += 4;
 	}
+	else if (upgradeOnePurchases == 4) {
+		clickCount += 5;
+	}
 	else {
 		clickCount += 1;
 	}
@@ -33,6 +36,16 @@ var autoClicker = function() {
 	}
 	else if (upgradeTwoPurchases == 3) {
 		clickCount += 3;
+		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
+		document.getElementById("pointsPerSec").innerHTML = autoClicksPerSec + " " + "Points/sec";
+	}
+	else if (upgradeTwoPurchases == 4) {
+		clickCount += 4;
+		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
+		document.getElementById("pointsPerSec").innerHTML = autoClicksPerSec + " " + "Points/sec";
+	}
+	else if (upgradeTwoPurchases == 5) {
+		clickCount += 5;
 		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
 		document.getElementById("pointsPerSec").innerHTML = autoClicksPerSec + " " + "Points/sec";
 	}
@@ -69,6 +82,15 @@ document.getElementById("upgradeOne").innerHTML = "Upgrade 1:" + " " + 25 + " " 
  		document.getElementById("upgradeOne").innerHTML = "Upgrade 1:" + " " + 100 + " " + "Points";
  		upgradeOnePurchases += 1;
  	}
+ 	else if (clickCount >= 100 && upgradeOnePurchases == 3) {
+ 		clickCount -= 100;
+ 		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
+ 		document.getElementById("upgradeOne").innerHTML = "Upgrade 1:" + " " + "Maxed Out";
+ 		upgradeOnePurchases += 1;
+ 	}
+ 	else if (upgradeOnePurchases == 4) {
+ 		alert("You maxed this upgrade!");
+ 	}
  	else {
  		alert("You do not have enough points!");
  	}
@@ -86,24 +108,43 @@ document.getElementById("upgradeOne").innerHTML = "Upgrade 1:" + " " + 25 + " " 
 document.getElementById("upgradeTwo").innerHTML = "Upgrade 2:" + " " + 50 + " " + "Points";
 
  document.getElementById("upgradeTwo").addEventListener('click', function() {
- 	autoClicksPerSec += 1;
  	if (clickCount >= 50 && upgradeTwoPurchases == 0) {
  		clickCount -= 50;
  		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
  		document.getElementById("upgradeTwo").innerHTML = "Upgrade 2:" + " " + 100 + " " + "Points";
  		upgradeTwoPurchases += 1;
+ 		autoClicksPerSec += 1;
  	}
  	else if (clickCount >= 100 && upgradeTwoPurchases == 1) {
  		clickCount -= 100;
  		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
  		document.getElementById("upgradeTwo").innerHTML = "Upgrade 2:" + " " + 150 + " " + "Points"; 
  		upgradeTwoPurchases += 1;
+ 		autoClicksPerSec += 1;
  	}
  	else if (clickCount >= 150 && upgradeTwoPurchases == 2) {
  		clickCount -= 150;
  		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
  		document.getElementById("upgradeTwo").innerHTML = "Upgrade 2:" + " " + 200 + " " + "Points";
  		upgradeTwoPurchases += 1;
+ 		autoClicksPerSec += 1;
+ 	}
+ 	else if (clickCount >= 200 && upgradeTwoPurchases == 3) {
+ 		clickCount -= 200;
+ 		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
+ 		document.getElementById("upgradeTwo").innerHTML = "Upgrade 2:" + " " + 250 + " " + "Points";
+ 		upgradeTwoPurchases += 1;
+ 		autoClicksPerSec += 1;
+ 	}
+ 	else if (clickCount >= 250 && upgradeTwoPurchases == 4) {
+ 		clickCount -= 250;
+ 		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
+ 		document.getElementById("upgradeTwo").innerHTML = "Upgrade 2:" + " " + "Maxed Out";
+ 		upgradeTwoPurchases += 1;
+ 		autoClicksPerSec += 1;
+ 	}
+ 	else if (upgradeTwoPurchases == 5) {
+ 		alert("You maxed out this upgrade!");
  	}
  	else {
  		alert("You do not have enough points!");
@@ -120,9 +161,26 @@ document.getElementById("upgradeTwo").innerHTML = "Upgrade 2:" + " " + 50 + " " 
 
 var secretUpgradePurchases = 0
 document.getElementById("secretOne").innerHTML = "Secret:" + " " + 1000 + " " + "Points"
+var clickerCycleOne = function () {
+	document.getElementById('clicker').style.width = 10;
+	setInterval(clickerCycleTwo, 1000);
+}
+var clickerCycleTwo = function () {
+	document.getElementById('clicker').style.width = 300;
+	setInterval(clickerCycleOne, 1000);
+}
 
 document.getElementById("secretOne").addEventListener('click', function() {
-	alert("You do not have enough points!");
+	if (clickCount >= 1000 && secretUpgradePurchases == 0) {
+		clickCount -= 1000;
+		document.getElementById("clickerCount").innerHTML = clickCount + " " + "Points";
+		document.getElementById("secretOne").innerHTML = "Secret:" + " " + "Maxed Out";
+		clickerCycleOne();
+		secretUpgradePurchases += 1;
+	}
+	else {
+		alert("You do not have enough points!");
+	}
 })
 
 document.getElementById("secretOne").onmouseover = function() {
